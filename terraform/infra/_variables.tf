@@ -6,7 +6,7 @@ variable "compartment_id" {
 variable "region" {
   description = "OCI region"
   type        = string
-  default = "eu-amsterdam-1"
+  default     = "eu-amsterdam-1"
 }
 
 variable "tenancy_id" {
@@ -24,15 +24,16 @@ variable "api_fingerprint" {
   type        = string
 }
 
-variable "api_private_key" {
+variable "api_private_key_path" {
   description = "OCI API private key path"
   type        = string
+  default = ""
 }
 
 variable "ssh_public_key" {
   description = "SSH Public Key used to access all instances"
   type        = string
-  default = ""
+  default     = ""
 }
 
 variable "kubernetes_version" {
