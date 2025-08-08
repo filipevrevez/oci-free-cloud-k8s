@@ -32,6 +32,11 @@ resource "local_file" "kube_config" {
   file_permission = 0400
 }
 
+output "kube_config" {
+  value     = local_file.kube_config.filename
+  sensitive = false
+}
+
 data "oci_identity_availability_domains" "ads" {
   compartment_id = var.compartment_id
 }
