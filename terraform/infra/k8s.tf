@@ -83,7 +83,7 @@ resource "oci_containerengine_node_pool" "k8s_node_pool" {
   }
   initial_node_labels {
     key   = "name"
-    value = "k8s-cluster"
+    value = "kuberry"
   }
   ssh_public_key = var.ssh_public_key
 }
