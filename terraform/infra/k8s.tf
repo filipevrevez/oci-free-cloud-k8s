@@ -50,7 +50,7 @@ resource "oci_containerengine_node_pool" "k8s_node_pool" {
   cluster_id         = oci_containerengine_cluster.k8s_cluster.id
   compartment_id     = var.compartment_id
   kubernetes_version = var.kubernetes_version
-  name               = "k8s-node-pool"
+  name               = "kuberry-node-pool"
 
   node_metadata = {
     user_data = base64encode(file("files/node-pool-init.sh"))
@@ -64,11 +64,11 @@ resource "oci_containerengine_node_pool" "k8s_node_pool" {
     size = var.kubernetes_worker_nodes
   }
 
-  node_shape = "VM.Standard.A1.Flex"
+  node_shape = "VM.Standard.E1.Flex"
 
   node_shape_config {
-    memory_in_gbs = 12
-    ocpus         = 2
+    memory_in_gbs = 24
+    ocpus         = 4
   }
   node_source_details {
     image_id    = jsondecode(data.jq_query.latest_image.result)
