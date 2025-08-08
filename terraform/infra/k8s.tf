@@ -57,15 +57,10 @@ resource "oci_containerengine_node_pool" "k8s_node_pool" {
   }
 
   node_config_details {
-
-    dynamic "placement_configs" {
-      for_each = data.oci_identity_availability_domains.ads.availability_domains
-      content {
-        availability_domain = each.value.name
-        subnet_id           = oci_core_subnet.vcn_private_subnet.id
-      }
+    placement_configs {
+      availability_domain = data.oci_identity_availability_domains.ads.availability_domains.name
+      subnet_id           = oci_core_subnet.vcn_private_subnet.id
     }
-
     size = var.kubernetes_worker_nodes
   }
 
