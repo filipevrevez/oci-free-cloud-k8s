@@ -59,9 +59,9 @@ resource "oci_containerengine_node_pool" "k8s_node_pool" {
   node_config_details {
 
     dynamic "placement_configs" {
-      for_each = toset(data.oci_identity_availability_domains.ads.availability_domains[*].name)
+      for_each = toset(data.oci_identity_availability_domains.ads.availability_domains)
       content {
-        availability_domain = each.value
+        availability_domain = each.value.name
         subnet_id           = oci_core_subnet.vcn_private_subnet.id
       }
     }
