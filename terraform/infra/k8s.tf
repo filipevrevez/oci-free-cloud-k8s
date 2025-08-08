@@ -1,7 +1,7 @@
 resource "oci_containerengine_cluster" "k8s_cluster" {
   compartment_id     = var.compartment_id
   kubernetes_version = var.kubernetes_version
-  name               = "k8s-cluster"
+  name               = "kuberry"
   vcn_id             = module.vcn.vcn_id
   endpoint_config {
     is_public_ip_enabled = true
