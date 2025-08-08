@@ -33,7 +33,7 @@ resource "local_file" "kube_config" {
 }
 
 output "kube_config" {
-  value     = local_file.kube_config.filename
+  value     = data.oci_containerengine_cluster_kube_config.k8s_cluster_kube_config.content
   sensitive = false
 }
 
